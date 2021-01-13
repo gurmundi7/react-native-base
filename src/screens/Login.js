@@ -14,7 +14,6 @@ import {useTheme, useToggleTheme} from '../theme/themeContext';
 const logoImage = require('../resources/images/logo.png');
 
 const LoginScreen = (props) => {
-
   //-- This is how you use styling in FC
   const theme = useTheme();
   const toggleTheme = useToggleTheme();
