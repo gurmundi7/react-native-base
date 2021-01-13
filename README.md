@@ -1,8 +1,15 @@
+# DON'T WASTE TIME ON SETUP. START CODING.
 # react-native-base
- React Native ready to use base template with all basic npm ready to use
+ React Native Project base template with all basic npms ready to use. Following packages are already configured.
+
+# Clone this Repository
+    clone https://github.com/gurmundi7/react-native-base.git
+
+# install all the packages
+    npm install
 # After npm install, Some Required Steps are
-    Go to node-modules->react-native->react.gradle & add this code. Its to solve the duplicate resource issue while we bundle android build.
-    Find doFirst method and add these lines after that.
+Go to node-modules->react-native->react.gradle & add this code. Its to solve the duplicate resource issue while we bundle android build.
+Find doFirst method and add these lines after that.
     
     doLast {
         def moveFunc = { resSuffix ->
@@ -20,3 +27,12 @@
         moveFunc.curry("drawable-xxxhdpi").call()
         moveFunc.curry("raw").call()
     }
+
+# Run Your Project
+For Android
+    npm run android
+For iOS
+    npm run ios
+
+# Generate Debug APK to share
+    npm run debug-apk
