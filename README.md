@@ -29,8 +29,10 @@ Find doFirst method and add these lines after that.
     }
 
 # Run Your Project
+
 For Android
     npm run android
+
 For iOS
     npm run ios
 
