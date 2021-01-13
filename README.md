@@ -29,9 +29,12 @@ Find doFirst method and add these lines after that.
     }
 
 # Run Your Project
-For Android
+## For Android
+
     npm run android
-For iOS
+
+## For iOS
+
     npm run ios
 
 # Generate Debug APK to share
