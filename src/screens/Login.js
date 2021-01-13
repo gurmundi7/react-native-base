@@ -8,15 +8,13 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import colors from '../config/colors';
-import {withRedux} from '../utils/hoc';
-import {Utils, Storage} from '../utils';
+import {showAlert, validateEmail, STORAGE, withRedux} from '../utils';
 import {useTheme, useToggleTheme} from '../theme/themeContext';
 
-//-- import images are const. we don't need to refetch those under every render.
 const logoImage = require('../resources/images/logo.png');
 
 const LoginScreen = (props) => {
+
   //-- This is how you use styling in FC
   const theme = useTheme();
   const toggleTheme = useToggleTheme();
@@ -25,26 +23,25 @@ const LoginScreen = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //-- Load Saved Credentials from local storage if saved
   useEffect(() => {
-    Storage.getUserData().then((userDetails) => {
+    STORAGE.getUserData().then((userDetails) => {
       props.saveUserDetails(userDetails);
     });
   }, []);
 
   const submitAction = () => {
     if (email.length === 0) {
-      Utils.showAlert('Please enter email.');
+      showAlert('Please enter email.');
       return;
     }
 
-    if (!Utils.validateEmail(email)) {
-      Utils.showAlert('Please enter valid email.');
+    if (!validateEmail(email)) {
+      showAlert('Please enter valid email.');
       return;
     }
 
     if (password.length === 0) {
-      Utils.showAlert('Please enter password.');
+      showAlert('Please enter password.');
       return;
     }
 
@@ -52,7 +49,7 @@ const LoginScreen = (props) => {
 
     props.login(params).then((userDetails) => {
       if (userDetails) {
-        Storage.storeUserData(userDetails);
+        STORAGE.storeUserData(userDetails);
       }
     });
   };
@@ -183,6 +180,4 @@ export const createStyle = (theme) => {
   });
 };
 
-const Screen = withRedux(LoginScreen);
-
-export default Screen;
+export default withRedux(LoginScreen);

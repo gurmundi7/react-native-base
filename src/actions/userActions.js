@@ -1,12 +1,8 @@
 import { USER_DETAILS, PATIENT_DATA, PATIENT_STAGE} from '../types';
-import * as APIs from '../utils/apis';
-
+import * as APIs from '../apis';
 
 export const saveUserDetails = (data) => {
-	return {
-		type: USER_DETAILS,
-		payload: data
-	};
+	return { type: USER_DETAILS, payload: data };
 };
 
 export const login = (params) => {
@@ -31,6 +27,10 @@ export const logout = (params) => {
 		});
 	};
 };
+
+/**
+ * MAKE SURE YOU ADD FUNCTION TO THIS METHOD. IT IS USED IN withRedux HOC to add all the functions to Component.
+ */
 
 export function dispatchActionsUser(dispatch) {
 	return {

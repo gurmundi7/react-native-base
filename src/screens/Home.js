@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
-import { withRedux } from '../utils/hoc';
+import { withRedux } from '../utils';
 
 const HomeScreen = (props) => {
   return (
